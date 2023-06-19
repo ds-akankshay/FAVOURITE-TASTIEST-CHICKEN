@@ -283,12 +283,22 @@ const Location: Template<ExternalApiRenderData> = ({
     c_oderimage,
     c_uberarticle,
     c_ordertextphoto,
-    c_ordertext
+    c_ordertext,
+    c_connected
    
   } = document;
   const Orderimage = c_oderimage?.map((link: any) => (
     <>
       <img  className="object-fill h-48 w-50" src={link.url} alt="" style={{height:"60px"}}/>
+    </>
+
+  ));
+  const Connectedimage =  c_connected?.image?.map((link: any) => (
+    <>
+    <a href="">
+    <img   src={link.url} alt="" />
+    </a>
+     
     </>
 
   ));
@@ -496,6 +506,10 @@ breadcrumbScheme.push({
         <span style={{fontSize:"17px",fontWeight:"inherit"}}>{c_uberarticle}</span>
         <div className="flex space-x-4">
           {Orderimage}
+        </div>
+        <div className="flex">
+          { c_connected.line}
+         {Connectedimage} 
         </div>
         
         <div className="nearby-sec">
