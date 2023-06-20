@@ -637,5 +637,10 @@ nav[aria-label="Pagination"] button:disabled{@apply cursor-not-allowed text-opac
   .storelocation-openCloseTime .day-hrs td.dayName{@apply pl-6}
   .storelocation-openCloseTime table.day-hrs .currentDay .dayName .checked{@apply left-1}
 }
+.map-sec {
+  margin-top: 0px;
+  height: 45rem;
+  width: calc(100% - 51.625rem);
+}
 
 

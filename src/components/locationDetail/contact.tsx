@@ -23,6 +23,8 @@ const Contact = (props: any) => {
     yextDisplayCoordinate,
     c_storeInfoHeading,
     c_getDirectionsCTAText,
+    c_ordertext
+
    
   } = props;
   return (
@@ -60,7 +62,7 @@ const Contact = (props: any) => {
           ""
         )}
 
-        <ul className="">
+        <ul className="flex">
           <li className="button-bx direction-button">
             <GetDirection
               buttonText={c_getDirectionsCTAText?c_getDirectionsCTAText:StaticData.getDirection}
@@ -69,8 +71,19 @@ const Contact = (props: any) => {
               longitude={longitude}
             />
           </li>
+          {/* <button >
+              <a id="address" className=" location-phn" href={`tel:${phone}`}>
+                {phone}
+              </a>
+              </button> */}
 
         </ul>
+       
+         
+            
+        
+        
+        
         
 
         <div className="map-sec">

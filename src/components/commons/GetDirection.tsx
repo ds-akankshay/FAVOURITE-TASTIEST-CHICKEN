@@ -80,7 +80,7 @@ const GetDirection = (props: GetDirection) => {
                     </Link>
     {/* <a
      onClick={getDirectionUrl} className="btn notHighlight" rel="noopener noreferrer" >
-      <div dangerouslySetInnerHTML={{__html: Directionsvg}}/> */}
+      <div dangerouslySetInnerHTML={{__html: Directionsvg}}/> }
     
     
     {/* </a> */}

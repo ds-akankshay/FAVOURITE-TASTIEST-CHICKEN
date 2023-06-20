@@ -39,7 +39,7 @@ import OpenClose from "../components/commons/openClose";
 import Faq from "../components/locationDetail/Faqs";
 import { StaticData } from "../../sites-global/staticData";
 
-import {apikey_for_entity, baseuRL,stagingBaseurl,AnalyticsEnableDebugging,AnalyticsEnableTrackingCookie, favicon } from "../../sites-global/global";
+import { apikey_for_entity, baseuRL, stagingBaseurl, AnalyticsEnableDebugging, AnalyticsEnableTrackingCookie, favicon } from "../../sites-global/global";
 import {
   AnalyticsProvider,
   AnalyticsScopeProvider,
@@ -75,11 +75,17 @@ export const config: TemplateConfig = {
       "c_uberarticle",
       "c_ordertextphoto",
       "c_ordertext",
-      "c_connected"
+      "c_connected",
+      "c_ourfood",
+      "c_favouritefavorites",
+      "c_information",
+      "c_downloadtheapp",
+      "c_faq.question",
+      "c_faq.answer"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
-     entityTypes:['location']
+      entityTypes: ['location']
 
     },
     // The entity language profiles that documents will be generated for.
@@ -136,7 +142,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   document,
 }): HeadConfig => {
   return {
-    title: document.c_meta_title?document.c_meta_title:`${document.name} Store of MGM Timber`,
+    title: document.c_meta_title ? document.c_meta_title : `${document.name} Store of MGM Timber`,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
     tags: [
@@ -144,11 +150,11 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         type: "meta",
         attributes: {
           name: "description",
-          content: `${document.c_meta_description?document.c_meta_description:`Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
+          content: `${document.c_meta_description ? document.c_meta_description : `Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
         },
       },
 
-     
+
       {
         type: "meta",
         attributes: {
@@ -179,7 +185,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         type: "meta",
         attributes: {
           property: "og:description",
-          content: `${document.c_meta_description?document.c_meta_description:`Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
+          content: `${document.c_meta_description ? document.c_meta_description : `Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
         },
       },
       {
@@ -214,14 +220,14 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         type: "meta",
         attributes: {
           name: "twitter:title",
-          content: document.c_meta_title?document.c_meta_title:`${document.name} Store of MGM Timber`,
+          content: document.c_meta_title ? document.c_meta_title : `${document.name} Store of MGM Timber`,
         },
       },
       {
         type: "meta",
         attributes: {
           name: "twitter:description",
-          content: `${document.c_meta_description?document.c_meta_description:`Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
+          content: `${document.c_meta_description ? document.c_meta_description : `Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
         },
       },
       /// twitter tag
@@ -242,8 +248,8 @@ export const transformProps: TransformProps<ExternalApiData> = async (
 
   var location = `${data.document.yextDisplayCoordinate ? data.document.yextDisplayCoordinate.latitude : data.document.displayCoordinate.latitude},${data.document.yextDisplayCoordinate ? data.document.yextDisplayCoordinate.longitude : data.document.displayCoordinate.longitude}`;
 
-    const url = `${AnswerExperienceConfig.endpoints.verticalSearch}?experienceKey=${AnswerExperienceConfig.experienceKey}&api_key=${AnswerExperienceConfig.apiKey}&v=20220511&version=${AnswerExperienceConfig.experienceVersion}&locale=${AnswerExperienceConfig.locale}&location=${location}&locationRadius=${AnswerExperienceConfig.locationRadius}&verticalKey=${AnswerExperienceConfig.verticalKey}&limit=4&retrieveFacets=true&skipSpellCheck=false&sessionTrackingEnabled=true&source=STANDARD`;
- console.log(url)
+  const url = `${AnswerExperienceConfig.endpoints.verticalSearch}?experienceKey=${AnswerExperienceConfig.experienceKey}&api_key=${AnswerExperienceConfig.apiKey}&v=20220511&version=${AnswerExperienceConfig.experienceVersion}&locale=${AnswerExperienceConfig.locale}&location=${location}&locationRadius=${AnswerExperienceConfig.locationRadius}&verticalKey=${AnswerExperienceConfig.verticalKey}&limit=4&retrieveFacets=true&skipSpellCheck=false&sessionTrackingEnabled=true&source=STANDARD`;
+  console.log(url)
   const externalApiData = (await fetch(url).then((res: any) =>
     res.json()
 
@@ -284,26 +290,44 @@ const Location: Template<ExternalApiRenderData> = ({
     c_uberarticle,
     c_ordertextphoto,
     c_ordertext,
-    c_connected
-   
+    c_connected,
+    c_information,
+    c_ourfood,
+    c_favouritefavorites,
+    c_downloadtheapp,
+    c_faq
+
+
   } = document;
   const Orderimage = c_oderimage?.map((link: any) => (
     <>
-      <img  className="object-fill h-48 w-50" src={link.url} alt="" style={{height:"60px"}}/>
+      <img className="object-fill h-48 w-50" src={link.url} alt="" style={{ height: "60px" }} />
     </>
 
   ));
-  const Connectedimage =  c_connected?.image?.map((link: any) => (
+  const Connectedimage = c_connected?.image?.map((link: any) => (
     <>
-    <a href="">
-    <img   src={link.url} alt="" />
-    </a>
-     
+      <a href="">
+        <img style={{ height: "27px" }} src={link.url} alt="" />
+      </a>
+
     </>
 
   ));
+  const Googleimage =_site?.c_headergoogleimage?.map((link: any) => (
+    <>
+      <a href="" >
+        <img    style={{ height: "95px" }}  src={link?.url} alt="" />
+      </a>
 
- let templateData = { document: document, __meta: __meta };
+    </>
+
+  ));
+  
+
+
+
+  let templateData = { document: document, __meta: __meta };
   let hoursSchema = [];
   let breadcrumbScheme = [];
   for (var key in hours) {
@@ -341,83 +365,83 @@ const Location: Template<ExternalApiRenderData> = ({
     }
   }
   document.dm_directoryParents &&
-  document.dm_directoryParents.map((i: any, index: any) => {
-    if (i.meta.entityType.id == "ce_country") {
-      document.dm_directoryParents[index].name =
-        document.dm_directoryParents[index].name;
-      document.dm_directoryParents[index].slug =
-        document.dm_directoryParents[index].slug;
+    document.dm_directoryParents.map((i: any, index: any) => {
+      if (i.meta.entityType.id == "ce_country") {
+        document.dm_directoryParents[index].name =
+          document.dm_directoryParents[index].name;
+        document.dm_directoryParents[index].slug =
+          document.dm_directoryParents[index].slug;
 
-      breadcrumbScheme.push({
-        "@type": "ListItem",
-        position: index,
-        item: {
-          "@id":
-            stagingBaseurl +
-       
-            document.dm_directoryParents[index].slug +
-            ".html",
-          name: i.name,
-        },
-      });
-    } else if (i.meta.entityType.id == "ce_region") {
-      let url = "";
-      document.dm_directoryParents.map((j: any) => {
-        if (
-          j.meta.entityType.id != "ce_region" &&
-          j.meta.entityType.id != "ce_city" &&
-          j.meta.entityType.id != "ce_root"
-        ) {
-          console.log(j, "j");
-          url = url  + j.slug;
-        }
-      });
-      breadcrumbScheme.push({
-        "@type": "ListItem",
-        position: index,
-        item: {
-          "@id":
-            stagingBaseurl +
-            url + "/" +
-            document.dm_directoryParents[index].slug +
-            ".html",
-          name: i.name,
-        },
-      });
-    } else if (i.meta.entityType.id == "ce_city") {
-      let url = "";
-      document.dm_directoryParents.map((j: any) => {
-        if (
-          j.meta.entityType.id != "ce_city" &&
-          j.meta.entityType.id != "ce_root"
-        ) {
-          console.log(j, "j");
-          url = url  + "/" + j.slug;
-        }
-      });
-      breadcrumbScheme.push({
-        "@type": "ListItem",
-        position: index,
-        item: {
-          "@id":
-            stagingBaseurl +
-            url +"/" +
-            document.dm_directoryParents[index].slug +
-            ".html",
-          name: i.name,
-        },
-      });
-    }
+        breadcrumbScheme.push({
+          "@type": "ListItem",
+          position: index,
+          item: {
+            "@id":
+              stagingBaseurl +
+
+              document.dm_directoryParents[index].slug +
+              ".html",
+            name: i.name,
+          },
+        });
+      } else if (i.meta.entityType.id == "ce_region") {
+        let url = "";
+        document.dm_directoryParents.map((j: any) => {
+          if (
+            j.meta.entityType.id != "ce_region" &&
+            j.meta.entityType.id != "ce_city" &&
+            j.meta.entityType.id != "ce_root"
+          ) {
+            console.log(j, "j");
+            url = url + j.slug;
+          }
+        });
+        breadcrumbScheme.push({
+          "@type": "ListItem",
+          position: index,
+          item: {
+            "@id":
+              stagingBaseurl +
+              url + "/" +
+              document.dm_directoryParents[index].slug +
+              ".html",
+            name: i.name,
+          },
+        });
+      } else if (i.meta.entityType.id == "ce_city") {
+        let url = "";
+        document.dm_directoryParents.map((j: any) => {
+          if (
+            j.meta.entityType.id != "ce_city" &&
+            j.meta.entityType.id != "ce_root"
+          ) {
+            console.log(j, "j");
+            url = url + "/" + j.slug;
+          }
+        });
+        breadcrumbScheme.push({
+          "@type": "ListItem",
+          position: index,
+          item: {
+            "@id":
+              stagingBaseurl +
+              url + "/" +
+              document.dm_directoryParents[index].slug +
+              ".html",
+            name: i.name,
+          },
+        });
+      }
+    });
+
+  breadcrumbScheme.push({
+    "@type": "ListItem",
+    position: 4,
+    item: {
+      "@id": stagingBaseurl + path,
+      name: document.name,
+    },
   });
-
-breadcrumbScheme.push({
-  "@type": "ListItem",
-  position: 4,
-  item: {
-    "@id": stagingBaseurl + path,
-    name: document.name,
-  },
-});
   let imageurl = photoGallery ? photoGallery.map((element: any) => {
     return element.image.url
   }) : null;
@@ -457,79 +481,141 @@ breadcrumbScheme.push({
           itemListElement: breadcrumbScheme,
         }}
       />
-    
-
-
-<AnalyticsProvider
+      <AnalyticsProvider
         templateData={templateData}
-        enableDebugging={AnalyticsEnableDebugging} 
+        enableDebugging={AnalyticsEnableDebugging}
         enableTrackingCookie={AnalyticsEnableTrackingCookie}
       >
         {" "}
         <AnalyticsScopeProvider name={""}>
-        <Header _site={_site} />
-      <PageLayout global={_site}>
-
-
-      <div className="container">
-            <div className='banner-text banner-dark-bg justify-center text-center'>
-              <h1 className=""> {name}</h1>
+          <Header _site={_site} />
+          <PageLayout global={_site}>
+            <div className="container">
+              <div className='banner-text banner-dark-bg justify-center text-center'>
+                <h1 className=""> {name}</h1>
                 <div className="openClosestatus detail-page closeing-div">
                   <OpenClose timezone={timezone} hours={hours} />
-                </div> 
-            </div>
-          </div>
-          <div className="location-information">
-          
-  
-        <Contact address={address} 
-           phone={mainPhone} latitude={yextDisplayCoordinate ? yextDisplayCoordinate.latitude : displayCoordinate?.latitude}
-           yextDisplayCoordinate={yextDisplayCoordinate} longitude={yextDisplayCoordinate ? yextDisplayCoordinate.longitude : displayCoordinate?.longitude} hours={hours}  additionalHoursText={additionalHoursText} ></Contact>
-          {
-            hours ?
-              <div className="map-sec" id="map_canvas">
-                <CustomMap prop={yextDisplayCoordinate ? yextDisplayCoordinate : displayCoordinate} />
-              </div> :
-              
-              <div className="map-sec without-hours" id="map_canvas">
-                <CustomMap prop={yextDisplayCoordinate ? yextDisplayCoordinate : displayCoordinate} />
+                </div>
               </div>
-          }
-        </div>
-        <span style={{fontSize:"17px",fontWeight:"inherit"}}>
-          {c_ordertext}
-        </span>
-        <div>
-        <img src={c_ordertextphoto.url} alt=""  style={{height:"64px",width:"84px"}}/>
-        </div>
-        
-        <span style={{fontSize:"17px",fontWeight:"inherit"}}>{c_uberarticle}</span>
-        <div className="flex space-x-4">
-          {Orderimage}
-        </div>
-        <div className="flex">
-          { c_connected.line}
-         {Connectedimage} 
-        </div>
-        
-        <div className="nearby-sec">
-          <div className="container">
-            <div className="sec-title"><h2 className="">{StaticData.NearStoretext}</h2></div>
-            <div className="nearby-sec-inner">
-              {yextDisplayCoordinate || cityCoordinate || displayCoordinate ?
-                <Nearby externalApiData={externalApiData} /> 
-             : ''}
             </div>
-          </div>
-          
-        </div>
+            <div className="location-information">
+              <Contact address={address}
+                phone={mainPhone} latitude={yextDisplayCoordinate ? yextDisplayCoordinate.latitude : displayCoordinate?.latitude}
+                yextDisplayCoordinate={yextDisplayCoordinate} longitude={yextDisplayCoordinate ? yextDisplayCoordinate.longitude : displayCoordinate?.longitude} ordertext={c_ordertext} hours={hours} additionalHoursText={additionalHoursText}  ></Contact>
+              {
+                hours ?
+                  <div className="map-sec" id="map_canvas">
+                    <CustomMap prop={yextDisplayCoordinate ? yextDisplayCoordinate : displayCoordinate} />
+                  </div> :
 
-      </PageLayout>
-      </AnalyticsScopeProvider>
-      <Footer _site={_site} />
+                  <div className="map-sec without-hours" id="map_canvas">
+                    <CustomMap prop={yextDisplayCoordinate ? yextDisplayCoordinate : displayCoordinate} />
+                  </div>
+              }
+            </div>
+            <span style={{ fontSize: "17px", fontWeight: "inherit" }}>
+              {c_ordertext}
+            </span>
+            <div>
+              <img src={c_ordertextphoto.url} alt="" style={{ height: "64px", width: "84px" }} />
+            </div>
+            <span style={{ fontSize: "17px", fontWeight: "inherit" }}>{c_uberarticle}</span>
+            <div className="flex space-x-4">
+              {Orderimage}
+            </div>
+            <div style={{ backgroundColor: "#090f6d", width: "max-content" }}>
+              <span style={{ color: "white" }}>{c_connected.line}</span>
+              <div className="flex" style={{ marginLeft: "503px" }}>
+                {Connectedimage}
+              </div>
+            </div>
+            <div>
+              <h1>
+                {c_information.line1}
+              </h1><br />
+              <span>
+                {c_information.line2}
+              </span>
+            </div>
+            <div className="ourfood ">
+              <h1>
+                our food
+              </h1>
+              <div className="flex">
+                {c_ourfood?.map((link: any) => {
+                  return (
+                    <>
+
+                      {link?.image?.map((value: any) => {
+                        return (
+                          <>
+                            <div>
+                              <img style={{ height: "200px" }} src={value?.url} alt="" />
+                              <span> {link.line.label}</span>
+
+                            </div>
+
+                          </>
+ )
+                      })}
+                    </>
+                  )
+                })}
+              </div>
+            </div>
+            <div className="ourfood ">
+              <h1>
+                Favourite  Favourites
+              </h1>
+              <div className="flex rounded-md" >
+                {c_favouritefavorites?.map((link: any) => {
+                  return (
+                    <>
+                      {link?.image?.map((value: any) => {
+                        return (
+                          <>
+                            <div>
+                              <img style={{ height: "200px" }} src={value?.url} alt="" />
+                              <span> {link.line.label}</span>
+                            </div>
+                          </>
+                        )
+                      })}
+                    </>
+                  )
+                })}
+              </div>
+            </div>
+            <div>
+              <h1> {c_downloadtheapp.name}</h1>
+              <p>
+                {c_downloadtheapp.line2}
+              </p>
+              <img src={c_downloadtheapp.image.url} alt="" />
+            </div>
+            <div>
+            {Googleimage}
+            </div>
+            <div><Faq faqs={c_faq} /></div>
+        
+            
+           
+           
+            <div className="nearby-sec">
+              <div className="container">
+                <div className="sec-title"><h2 className="">{StaticData.NearStoretext}</h2></div>
+                <div className="nearby-sec-inner">
+                  {yextDisplayCoordinate || cityCoordinate || displayCoordinate ?
+                    <Nearby externalApiData={externalApiData} />
+                    : ''}
+                </div>
+              </div>
+            </div>
+          </PageLayout>
+        </AnalyticsScopeProvider>
+        <Footer _site={_site} />
       </AnalyticsProvider>
     </>
   );
 };
-
 export default Location;
