@@ -66,16 +66,16 @@ export const config: TemplateConfig = {
 };
 
 
-export const getPath: GetPath<TemplateProps> = ({ document }) => {
-  currentUrl = "/" + document.slug.toString() + ".html";
+// export const getPath: GetPath<TemplateProps> = ({ document }) => {
+//   currentUrl = "/" + document.slug.toString() + ".html";
 //   return "/" + document.slug.toString() + ".html";
-  return "index.html";
+//   return "index.html";
 
-};
-
-// export const getRedirects: GetRedirects<TemplateProps> = ({ document }) => {
-//   return [`index-old/${document.id.toString()}`];
 // };
+
+export const getRedirects: GetRedirects<TemplateProps> = ({ document }) => {
+  return [`index-old/${document.id.toString()}`];
+};
 
 
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
