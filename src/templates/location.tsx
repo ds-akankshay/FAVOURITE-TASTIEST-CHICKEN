@@ -8,8 +8,8 @@ import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { JsonLd } from "react-schemaorg";
 import Opening from "../components/commons/openClose";
 import { nearByLocation } from "../types/nearByLocation";
-import Logo from "../images/logo-header.svg"
-import offerBanner from "../images/offer-banner.jpg"
+// import Logo from "../images/logo-header.svg"
+// import offerBanner from "../images/offer-banner.jpg"
 import IframeMap from "../components/locationDetail/IframeMap";
 import "../index.css";
 import {
@@ -142,7 +142,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   document,
 }): HeadConfig => {
   return {
-    title: document.c_meta_title ? document.c_meta_title : `${document.name} Store of MGM Timber`,
+    title: document.c_meta_title ? document.c_meta_title : `${document.name} Store of FAVOURITE TASTIEST CHICKEN`,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
     tags: [
@@ -150,7 +150,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         type: "meta",
         attributes: {
           name: "description",
-          content: `${document.c_meta_description ? document.c_meta_description : `Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
+          content: `${document.c_meta_description ? document.c_meta_description : `Find the ${document.name}FAVOURITE TASTIEST CHICKEN Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
         },
       },
 
@@ -171,26 +171,27 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         },
       },
 
-      // {
-      //   type: "link",
-      //   attributes: {
-      //     rel: "canonical",
-      //     href: `${document._site.c_canonical?document.c_canonical:stagingBaseurl
+      {
+        type: "link",
+        attributes: {
+          rel: "canonical",
+          href: `${document._site.c_canonical?document.c_canonical:stagingBaseurl
 
-      //       }${document.slug?document.slug:`${document.name.toLowerCase()}`}.html`,
-      //   },
-      // },
+            }${document.slug?document.slug:`${document.name.toLowerCase()}`}.html`,
+        },
+      },
 
       {
         type: "meta",
         attributes: {
           property: "og:description",
-          content: `${document.c_meta_description ? document.c_meta_description : `Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
+          content: `${document.c_meta_description ? document.c_meta_description : `Find the ${document.name}FAVOURITE TASTIEST CHICKEN Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
         },
       },
       {
         type: "link",
         attributes: {
+          name: "og:image",
           rel: "shortcut icon",
           href: favicon,
         },
@@ -220,14 +221,14 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         type: "meta",
         attributes: {
           name: "twitter:title",
-          content: document.c_meta_title ? document.c_meta_title : `${document.name} Store of MGM Timber`,
+          content: document.c_meta_title ? document.c_meta_title : `${document.name} Store ofFAVOURITE TASTIEST CHICKEN`,
         },
       },
       {
         type: "meta",
         attributes: {
           name: "twitter:description",
-          content: `${document.c_meta_description ? document.c_meta_description : `Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
+          content: `${document.c_meta_description ? document.c_meta_description : `Find the ${document.name} FAVOURITE TASTIEST CHICKEN Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`}`,
         },
       },
       /// twitter tag
@@ -295,7 +296,8 @@ const Location: Template<ExternalApiRenderData> = ({
     c_ourfood,
     c_favouritefavorites,
     c_downloadtheapp,
-    c_faq
+    c_faq,
+    dm_directoryParents
 
 
   } = document;
@@ -489,10 +491,16 @@ const Location: Template<ExternalApiRenderData> = ({
         {" "}
         <AnalyticsScopeProvider name={""}>
           <Header _site={_site} />
+          <BreadCrumbs
+          name={name}
+          address={address}
+          parents={dm_directoryParents}
+          baseUrl={relativePrefixToRoot}
+        ></BreadCrumbs>
           <PageLayout global={_site}>
             <div className="container">
               <div className='banner-text banner-dark-bg justify-center text-center'>
-                <h1 className=""> {name}</h1>
+                <h1 className="">{name}</h1>
                 <div className="openClosestatus detail-page closeing-div">
                   <OpenClose timezone={timezone} hours={hours} />
                 </div>

@@ -33,7 +33,7 @@ const BreadCrumbs = (props: data) => {
           
           data.push({
             name: regionNames.of(parents[i].name),
-            slug: parents[i].slug,
+            slug:`/index`,
             count:parents[i].dm_directoryChildrenCount
           });
 

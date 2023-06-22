@@ -27,6 +27,8 @@ import Availability from "../components/locationDetail/Availability";
 import OpenClose from "../components/commons/openClose";
 import timesvg from "../images/watch-icn.svg";
 import { Link } from "@yext/pages/components";
+import Header from "../components/layouts/header";
+import Footer from "../components/layouts/footer";
 var currentUrl = "";
 export const config: TemplateConfig = {
   stream: {
@@ -87,7 +89,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           })
 
   return {
-    title: `${document.c_meta_title?document.c_meta_title:`MGM Stores in ${document.name} | Find a Local Store`}`,
+    title: `${document.c_meta_title?document.c_meta_title:`FAVOURITE TASTIEST CHICKEN Stores in ${document.name} | Find a Local Store`}`,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
     tags: [
@@ -102,7 +104,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           type: "meta",
           attributes: {
             name: "description",
-            content:`${document.c_meta_description?document.c_meta_description:`Use this page to find your nearest MGM store in ${document.name} and discover the location details you need to visit us today.`}`,
+            content:`${document.c_meta_description?document.c_meta_description:`Use this page to find your nearest FAVOURITE TASTIEST CHICKEN store in ${document.name} and discover the location details you need to visit us today.`}`,
           },
         },
 
@@ -163,7 +165,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           type: "meta",
           attributes: {
             property: "og:description",
-            content: `${document.c_meta_description?document.c_meta_description:`Find MGM Timber Store in ${document.name}. We stock high-quality, robust products at competitive rates.`}`,
+            content: `${document.c_meta_description?document.c_meta_description:`Find FAVOURITE TASTIEST CHICKEN Timber Store in ${document.name}. We stock high-quality, robust products at competitive rates.`}`,
           },
         },
         {
@@ -200,7 +202,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         type: "meta",
         attributes: {
           name: "twitter:description",
-          content: `${document.c_meta_description?document.c_meta_description:`Find MGM Timber Store in ${document.name}. We stock high-quality, robust products at competitive rates.`}`
+          content: `${document.c_meta_description?document.c_meta_description:`Find FAVOURITE TASTIEST CHICKEN  Store in ${document.name}. We stock high-quality, robust products at competitive rates.`}`
         },
       },
     ],
@@ -264,7 +266,7 @@ const City: Template<TemplateRenderProps> = ({
     var string: any = name.toString();;
     let result: any = string.replaceAll(" ", "-");
     if (!entity.slug) {
-      url = `/${entity.id}-${result}.html`;
+      url = `/${entity.id}`;
     } else {
       url = `/${entity.slug.toString()}.html`;
     }
@@ -455,18 +457,19 @@ const City: Template<TemplateRenderProps> = ({
         }}
       />
       <PageLayout global={_site}>
-        <BreadCrumbs
-          name={name}
-          address={address}
-          parents={dm_directoryParents}
-          baseUrl={relativePrefixToRoot}
-        ></BreadCrumbs>
+      <Header _site={_site} />
+                        <BreadCrumbs
+                            name={name}
+                            address={address}
+                            parents={dm_directoryParents}
+                            baseUrl={relativePrefixToRoot}
+                        ></BreadCrumbs>
 
         <div className="content-list city-page">
           <div className="container mx-auto">
             <div className="sec-title">
               <h2>
-              MGM stores in {name}
+              FAVOURITE TASTIEST CHICKEN stores in {name}
               </h2>
             </div>
             <div className="flex flex-wrap justify-center items-start -mx-2.5 lg:-mx-[.9375rem]">
@@ -474,6 +477,7 @@ const City: Template<TemplateRenderProps> = ({
             </div>
           </div>
         </div>
+        <Footer _site={_site} />
       </PageLayout>
     </>
   );

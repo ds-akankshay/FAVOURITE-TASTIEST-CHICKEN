@@ -16,6 +16,8 @@ import Banner from "../components/locationDetail/banner";
 import { StaticData } from "../../sites-global/staticData";
 import PageLayout from "../components/layouts/PageLayout";
 import { favicon, regionNames, stagingBaseurl } from "../../sites-global/global";
+import Header from "../components/layouts/header";
+import Footer from "../components/layouts/footer";
 
 
 
@@ -52,10 +54,10 @@ export const config: TemplateConfig = {
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
-      entityTypes: ["ce_country"],
-      savedFilterIds: [
-        "dm_stores-directory_address_countrycode"
-      ]
+      entityTypes: ["ce_country"]
+      // savedFilterIds: [
+      //   "dm_stores-directory_address_countrycode"
+      // ]
     },
     // The entity language profiles that documents will be generated for.
     localization: {
@@ -67,9 +69,9 @@ export const config: TemplateConfig = {
 
 
 export const getPath: GetPath<TemplateProps> = () => {
-    // console.log(document, "bkg")
-    // return `${document.slug?.toString()}` + ".html";
-    return "index.html"
+  // console.log(document, "bkg")
+  // return `${document.slug?.toString()}` + ".html";
+  return "index.html"
 
 };
 
@@ -85,7 +87,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
 }): HeadConfig => {
   
   return {
-    title: `${document.c_meta_title?document.c_meta_title:`MGM Stores in ${document.name} | Find a Local Store`}`,
+    title: `${document.c_meta_title?document.c_meta_title:`FAVOURITE TASTIEST CHICKEN Stores in ${document.name} | Find a Local Store`}`,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
     tags: [
@@ -100,7 +102,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           type: "meta",
           attributes: {
             name: "description",
-            content:`${document.c_meta_description?document.c_meta_description:`Use this page to find your nearest MGM store in ${document.name} and discover the location details you need to visit us today.`}`,
+            content:`${document.c_meta_description?document.c_meta_description:`Use this page to find your nearest FAVOURITE TASTIEST CHICKEN store in ${document.name} and discover the location details you need to visit us today.`}`,
           },
         },
 
@@ -150,7 +152,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           type: "meta",
           attributes: {
             property: "og:description",
-            content: `${document.c_meta_description?document.c_meta_description:`Find MGM Timber Store in ${document.name}. We stock high-quality, robust products at competitive rates.`}`,
+            content: `${document.c_meta_description?document.c_meta_description:`Find FAVOURITE TASTIEST CHICKENTimber Store in ${document.name}. We stock high-quality, robust products at competitive rates.`}`,
           },
         },
         {
@@ -187,15 +189,12 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         type: "meta",
         attributes: {
           name: "twitter:description",
-          content: `${document.c_meta_description?document.c_meta_description:`Find MGM Timber Store in ${document.name}. We stock high-quality, robust products at competitive rates.`}`
+          content: `${document.c_meta_description?document.c_meta_description:`Find FAVOURITE TASTIEST CHICKEN Store in ${document.name}. We stock high-quality, robust products at competitive rates.`}`
         },
       },
     ],
   };
 };
-
-
-
 const country: Template<TemplateRenderProps> = ({
   relativePrefixToRoot,
   path,
@@ -262,7 +261,7 @@ const country: Template<TemplateRenderProps> = ({
       <li className=" storelocation-category">
         <a
           key={entity.slug}
-          href={stagingBaseurl + detlslug}
+          href={ detlslug}
         >
           {entity.name} ({entity.dm_baseEntityCount})
         </a>
@@ -278,6 +277,7 @@ const country: Template<TemplateRenderProps> = ({
   return (
     <>
       <PageLayout global={_site}>
+      <Header _site={_site} />
         <BreadCrumbs
           name={regionNames.of(name)}
           address={address}
@@ -305,7 +305,7 @@ const country: Template<TemplateRenderProps> = ({
 
           </div>
         </div>
-
+        <Footer _site={_site} />
       </PageLayout>
     </>
   );
