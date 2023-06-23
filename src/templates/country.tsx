@@ -293,7 +293,7 @@ const country: Template<TemplateRenderProps> = ({
         <div className="content-list">
           <div className="container">
             <div className="sec-title">
-              <h2 style={{ textAlign: "center" }}>
+              <h2 style={{ textAlign: "center" ,color:"#090f6d",fontStyle:"normal",fontWeight:"bold"}}>
                 {StaticData.AllRegion} {regionNames.of(name)}{" "}
               </h2>
             </div>

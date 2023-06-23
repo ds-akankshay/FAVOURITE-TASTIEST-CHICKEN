@@ -637,10 +637,32 @@ nav[aria-label="Pagination"] button:disabled{@apply cursor-not-allowed text-opac
   .storelocation-openCloseTime .day-hrs td.dayName{@apply pl-6}
   .storelocation-openCloseTime table.day-hrs .currentDay .dayName .checked{@apply left-1}
 }
-.map-sec {
+/* .map-sec {
   margin-top: 0px;
   height: 45rem;
   width: calc(100% - 51.625rem);
+} */
+.storebtn{
+  background-color: red;
+height: revert;
+width: 50px;
+}
+.banner-text h1 {
+  margin-bottom: -0.25rem;
+  margin-top: -16rem;
+  font-family: "futura_ptdemi", Georgia, Arial, sans-serif;
+  font-size: 2.4375rem;
+  --tw-text-opacity: 1;
+  color: rgb(2 166 219 / var(--tw-text-opacity));
+}
+.closeing-div .opendot {
+  position: relative;
+  font-family: "futura_ptdemi", Georgia, Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(56 56 56 / var(--tw-text-opacity));
+  font-size: 41px;
 }
 
 

@@ -69,6 +69,7 @@ const Contact = (props: any) => {
               address={address}
               latitude={latitude}
               longitude={longitude}
+              
             />
           </li>
           {/* <button >

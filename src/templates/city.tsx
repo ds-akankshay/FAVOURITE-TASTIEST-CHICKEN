@@ -268,7 +268,7 @@ const City: Template<TemplateRenderProps> = ({
     if (!entity.slug) {
       url = `/${entity.id}`;
     } else {
-      url = `/${entity.slug.toString()}.html`;
+      url = `/${entity.slug.toString()}`;
     }
 
 
@@ -468,7 +468,7 @@ const City: Template<TemplateRenderProps> = ({
         <div className="content-list city-page">
           <div className="container mx-auto">
             <div className="sec-title">
-              <h2>
+              <h2 style={{color:"#090f6d",fontStyle:"normal",fontWeight:"bold"}}>
               FAVOURITE TASTIEST CHICKEN stores in {name}
               </h2>
             </div>

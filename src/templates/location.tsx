@@ -81,7 +81,9 @@ export const config: TemplateConfig = {
       "c_information",
       "c_downloadtheapp",
       "c_faq.question",
-      "c_faq.answer"
+      "c_faq.answer",
+      "c_bannerimage",
+      "c_cta"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -297,7 +299,8 @@ const Location: Template<ExternalApiRenderData> = ({
     c_favouritefavorites,
     c_downloadtheapp,
     c_faq,
-    dm_directoryParents
+    dm_directoryParents,
+    c_bannerimage
 
 
   } = document;
@@ -310,7 +313,7 @@ const Location: Template<ExternalApiRenderData> = ({
   const Connectedimage = c_connected?.image?.map((link: any) => (
     <>
       <a href="">
-        <img style={{ height: "27px" }} src={link.url} alt="" />
+        <img style={{ height: "27px"}} src={link.url} alt="" />
       </a>
 
     </>
@@ -497,15 +500,21 @@ const Location: Template<ExternalApiRenderData> = ({
           parents={dm_directoryParents}
           baseUrl={relativePrefixToRoot}
         ></BreadCrumbs>
+        
           <PageLayout global={_site}>
+          <img src={c_bannerimage.url} alt="" />
+        
+        
             <div className="container">
+              
               <div className='banner-text banner-dark-bg justify-center text-center'>
-                <h1 className="">{name}</h1>
-                <div className="openClosestatus detail-page closeing-div">
-                  <OpenClose timezone={timezone} hours={hours} />
-                </div>
+                <h1 className="" style={{color:"white",background:"#00000070"}}>{name}</h1>
+                
               </div>
             </div>
+            <div className="openClosestatus detail-page closeing-div" style={{marginTop:"20px",fontSize:"40px"}}>
+                  <OpenClose timezone={timezone} hours={hours} />
+                </div>
             <div className="location-information">
               <Contact address={address}
                 phone={mainPhone} latitude={yextDisplayCoordinate ? yextDisplayCoordinate.latitude : displayCoordinate?.latitude}
@@ -521,35 +530,40 @@ const Location: Template<ExternalApiRenderData> = ({
                   </div>
               }
             </div>
-            <span style={{ fontSize: "17px", fontWeight: "inherit" }}>
+            <span style={{ fontSize: "17px", fontWeight: "inherit",marginBottom:"20px" }}>
               {c_ordertext}
             </span>
             <div>
               <img src={c_ordertextphoto.url} alt="" style={{ height: "64px", width: "84px" }} />
             </div>
-            <span style={{ fontSize: "17px", fontWeight: "inherit" }}>{c_uberarticle}</span>
-            <div className="flex space-x-4">
+            <span style={{ fontSize: "17px", fontWeight: "inherit", marginTop:"10px"}}>{c_uberarticle}</span>
+            <div className="flex space-x-4" style={{marginTop:"10px",marginLeft:"30px"}}>
               {Orderimage}
             </div>
-            <div style={{ backgroundColor: "#090f6d", width: "max-content" }}>
-              <span style={{ color: "white" }}>{c_connected.line}</span>
-              <div className="flex" style={{ marginLeft: "503px" }}>
-                {Connectedimage}
+            <div style={{ backgroundColor: "#000080", width: "750px" ,marginTop:"35px" ,height:"52px",marginLeft:"30px"}}>
+             
+              <div className="flex" style={{marginTop:"13px"}} >
+              <span style={{ color: "white",marginLeft:"30px",fontSize:"13px" }}>{c_connected.line}</span>
+               <span className="flex" style={{marginLeft:"415px"}}>
+               {Connectedimage}
+               </span>
+               
+               
               </div>
             </div>
             <div>
-              <h1>
+              <h1 style={{color:"#000080",fontWeight:"bold"}}>
                 {c_information.line1}
               </h1><br />
-              <span>
+              <span className="leading-8" style={{marginTop:"10px",fontSize:"initial"}}>
                 {c_information.line2}
               </span>
             </div>
-            <div className="ourfood ">
-              <h1>
+            <div className="">
+              <h1  style={{color:"#000080",fontWeight:"bold",marginLeft:"550px",marginTop:"35px"}}>
                 our food
               </h1>
-              <div className="flex">
+              <div className="flex space-x-36">
                 {c_ourfood?.map((link: any) => {
                   return (
                     <>
@@ -571,11 +585,11 @@ const Location: Template<ExternalApiRenderData> = ({
                 })}
               </div>
             </div>
-            <div className="ourfood ">
-              <h1>
+            <div className="">
+              <h1  style={{color:"#000080",fontWeight:"bold",marginLeft:"550px",marginTop:"35px"}}>
                 Favourite  Favourites
               </h1>
-              <div className="flex rounded-md" >
+              <div className="flex rounded-md space-x-36" >
                 {c_favouritefavorites?.map((link: any) => {
                   return (
                     <>
@@ -583,7 +597,7 @@ const Location: Template<ExternalApiRenderData> = ({
                         return (
                           <>
                             <div>
-                              <img style={{ height: "200px" }} src={value?.url} alt="" />
+                              <img style={{ height: "200px"}} src={value?.url} alt="" />
                               <span> {link.line.label}</span>
                             </div>
                           </>
