@@ -156,8 +156,8 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
             property: "og:url",
             content: `${
               stagingBaseurl 
-                 ? stagingBaseurl + canonical + "/"+ document.slug + ".html"
-                 : "/" + document.slug + ".html"
+                 ? stagingBaseurl + canonical + "/"+ document.slug 
+                 : "/" + document.slug 
             }`,
           },
         },
