@@ -156,8 +156,8 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
             property: "og:url",
             content: `${
               stagingBaseurl 
-                 ? stagingBaseurl + canonical + "/"+ document.slug 
-                 : "/" + document.slug 
+                 ? stagingBaseurl + canonical + "/"+ document.slug + ".html"
+                 : "/" + document.slug + ".html"
             }`,
           },
         },
@@ -268,7 +268,7 @@ const City: Template<TemplateRenderProps> = ({
     if (!entity.slug) {
       url = `/${entity.id}`;
     } else {
-      url = `/${entity.slug.toString()}`;
+      url = `/${entity.id}`;
     }
 
 
@@ -468,7 +468,7 @@ const City: Template<TemplateRenderProps> = ({
         <div className="content-list city-page">
           <div className="container mx-auto">
             <div className="sec-title">
-              <h2 style={{color:"#090f6d",fontStyle:"normal",fontWeight:"bold"}}>
+              <h2 style={{color:"#090f6d",fontStyle:"normal",fontWeight:"bolder"}}>
               FAVOURITE TASTIEST CHICKEN stores in {name}
               </h2>
             </div>
