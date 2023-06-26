@@ -662,7 +662,13 @@ width: 50px;
   line-height: 1.75rem;
   --tw-text-opacity: 1;
   color: rgb(56 56 56 / var(--tw-text-opacity));
-  font-size: 41px;
+  font-size: 21px;
 }
+
+/* .phoneimage{
+  height: 50px;
+  width: 100px;
+} */
+
 
 

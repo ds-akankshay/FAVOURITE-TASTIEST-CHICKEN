@@ -195,7 +195,7 @@ export const OpenStausFunctions = {
         currentInterval.start === "00:00" &&
         currentInterval.end === "23:59"
       ) {
-        return <div className={"opendot"}>Open 24 Hours</div>;
+        return <div className={"opendot" }  style={{color:" #000080"}}>Open 24 Hours</div>;
       } else {
         return (
           <div className={"opendot green-dot"}>
@@ -231,7 +231,7 @@ export const OpenStausFunctions = {
               <div className="hours-info ">
                 <span className="font-second-main-font " style={{color:"red"}} > Closed - </span>
                 {"Opens at "}
-                <span className="lowercase">
+                <span className="lowercase" style={{color:" #000080"}}>
                   {OpenStausFunctions.formatTime(nextInterval.start).replace(
                     ":00",
                     ""
@@ -247,7 +247,7 @@ export const OpenStausFunctions = {
           <div className={"closeddot 3"}>
             <div className="red-dot">
              
-              <div className="hours-info ">
+              <div className="hours-info "  style={{marginTop:"30px"}}>
                 <span className="font-second-main-font" style={{color:"red"}}>Closed - </span>
                 {"Opens at "}
                 <span className="lowercase">

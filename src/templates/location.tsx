@@ -83,7 +83,12 @@ export const config: TemplateConfig = {
       "c_faq.question",
       "c_faq.answer",
       "c_bannerimage",
-      "c_cta"
+      "c_cta",
+      "dm_directoryParents.name",
+      "dm_directoryParents.slug",
+      "dm_directoryParents.meta.entityType",
+      "c_bannertext",
+      "c_faqdata"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -177,9 +182,9 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         type: "link",
         attributes: {
           rel: "canonical",
-          href: `${document._site.c_canonical?document.c_canonical:stagingBaseurl
+          href: `${document._site.c_canonical ? document.c_canonical : stagingBaseurl
 
-            }${document.slug?document.slug:`${document.name.toLowerCase()}`}.html`,
+            }${document.slug ? document.slug : `${document.name.toLowerCase()}`}.html`,
         },
       },
 
@@ -300,7 +305,10 @@ const Location: Template<ExternalApiRenderData> = ({
     c_downloadtheapp,
     c_faq,
     dm_directoryParents,
-    c_bannerimage
+    c_bannerimage,
+    c_cta,
+    c_bannertext,
+    c_faqdata
 
 
   } = document;
@@ -313,22 +321,22 @@ const Location: Template<ExternalApiRenderData> = ({
   const Connectedimage = c_connected?.image?.map((link: any) => (
     <>
       <a href="">
-        <img style={{ height: "27px"}} src={link.url} alt="" />
+        <img style={{ height: "27px" }} src={link.url} alt="" />
       </a>
 
     </>
 
   ));
-  const Googleimage =_site?.c_headergoogleimage?.map((link: any) => (
+  const Googleimage = _site?.c_headergoogleimage?.map((link: any) => (
     <>
       <a href="" >
-        <img    style={{ height: "95px" }}  src={link?.url} alt="" />
+        <img style={{ height: "95px" }} src={link?.url} alt="" />
       </a>
 
     </>
 
   ));
-  
+
 
 
 
@@ -495,27 +503,58 @@ const Location: Template<ExternalApiRenderData> = ({
         <AnalyticsScopeProvider name={""}>
           <Header _site={_site} />
           <BreadCrumbs
-          name={name}
-          address={address}
-          parents={dm_directoryParents}
-          baseUrl={relativePrefixToRoot}
-        ></BreadCrumbs>
-        
+            name={name}
+            address={address}
+            parents={dm_directoryParents}
+            baseUrl={relativePrefixToRoot}
+          ></BreadCrumbs>
+
           <PageLayout global={_site}>
-          <img src={c_bannerimage.url} alt="" />
-        
-        
-            <div className="container">
-              
-              <div className='banner-text banner-dark-bg justify-center text-center'>
-                <h1 className="" style={{color:"white",background:"#00000070"}}>{name}</h1>
-                
+          
+
+
+           
+            
+
+            <div className="mt-5 w-full h-56 md:h-96 bg-no-repeat bg-cover relative z-[0] append-banner-img">
+              <img
+                className="hidden md:block object-cover object-center absolute top-0 left-0 -z-[1] w-full h-full"
+                src={c_bannerimage.url}
+                alt={""}
+              />
+
+              <div className="w-full h-56 md:h-96 bg-opacity-50 bg-black flex items-center justify-center ">
+                <div className="mx-2 text-center">
+                  <div>
+                    <h1 className="text-white text-6xl font-bold font-evogriaregular md:text-6xl  2xl:text-5xl uppercase">
+                     {name}
+                    </h1>
+                    <div className="tobook-btn pt-6 flex justify-center text-white text-2xl">
+                      
+                      {c_bannertext}
+                      
+                     
+                        
+                     
+                    </div>
+                    <div className="menu-collect-btn flex space-x-6 justify-center pt-6">
+                      <a
+                        href={c_cta?.link}
+                        className="rounded-sm inline-block font-bold  !leading-[2.8rem]   text-center  transition-all transform hover:scale-[1.09]   w-24 lg:w-[90px] xl:w-52  2xl:w-32   text-white  text-xs xl:text-lg bg-[#f60909]"
+                      >
+                        {c_cta?.label}
+                      </a>
+                     
+                    </div>
+                   
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="openClosestatus detail-page closeing-div" style={{marginTop:"20px",fontSize:"40px"}}>
-                  <OpenClose timezone={timezone} hours={hours} />
-                </div>
-            <div className="location-information">
+            <div className="openClosestatus detail-page closeing-div">
+              <OpenClose timezone={timezone} hours={hours} />
+            </div>
+            <div className="location-information" style={{ marginTop: "50px" }} >
               <Contact address={address}
                 phone={mainPhone} latitude={yextDisplayCoordinate ? yextDisplayCoordinate.latitude : displayCoordinate?.latitude}
                 yextDisplayCoordinate={yextDisplayCoordinate} longitude={yextDisplayCoordinate ? yextDisplayCoordinate.longitude : displayCoordinate?.longitude} ordertext={c_ordertext} hours={hours} additionalHoursText={additionalHoursText}  ></Contact>
@@ -530,99 +569,83 @@ const Location: Template<ExternalApiRenderData> = ({
                   </div>
               }
             </div>
-            <span style={{ fontSize: "17px", fontWeight: "inherit",marginBottom:"20px" }}>
+            <span style={{ fontSize: "17px", fontWeight: "inherit", marginBottom: "20px" }}>
               {c_ordertext}
             </span>
             <div>
               <img src={c_ordertextphoto.url} alt="" style={{ height: "64px", width: "84px" }} />
             </div>
-            <span style={{ fontSize: "17px", fontWeight: "inherit", marginTop:"10px"}}>{c_uberarticle}</span>
-            <div className="flex space-x-4" style={{marginTop:"10px",marginLeft:"30px"}}>
+            <span style={{ fontSize: "17px", fontWeight: "inherit", marginTop: "10px" }}>{c_uberarticle}</span>
+            <div className="flex space-x-4" style={{ marginTop: "10px", marginLeft: "30px" }}>
               {Orderimage}
             </div>
-            <div style={{ backgroundColor: "#000080", width: "750px" ,marginTop:"35px" ,height:"52px",marginLeft:"30px"}}>
-             
-              <div className="flex" style={{marginTop:"13px"}} >
-              <span style={{ color: "white",marginLeft:"30px",fontSize:"13px" }}>{c_connected.line}</span>
-               <span className="flex" style={{marginLeft:"415px"}}>
-               {Connectedimage}
-               </span>
-               
-               
+            <div style={{ backgroundColor: "#000080", width: "750px", marginTop: "35px", height: "52px", marginLeft: "30px" }}>
+
+              <div className="flex" style={{ marginTop: "13px" }} >
+                <span style={{ color: "white", marginLeft: "30px", fontSize: "13px" }}>{c_connected.line}</span>
+                <span className="flex" style={{ marginLeft: "415px" }}>
+                  {Connectedimage}
+                </span>
+
+
               </div>
             </div>
             <div>
-              <h1 style={{color:"#000080",fontWeight:"bold"}}>
+              <h1 style={{ color: "#000080", fontWeight: "bold", marginLeft: "32px", marginTop: "32px" }}>
                 {c_information.line1}
               </h1><br />
-              <span className="leading-8" style={{marginTop:"10px",fontSize:"initial"}}>
+              <span className="text-center" style={{ marginTop: "10px", fontSize: "initial", marginLeft: "32px" }}>
                 {c_information.line2}
               </span>
             </div>
-            <div className="">
-              <h1  style={{color:"#000080",fontWeight:"bold",marginLeft:"550px",marginTop:"35px"}}>
+            <div style={{marginTop:"40px"}}>
+              <h1 style={{ color: "#000080", fontWeight: "bold", marginLeft: "550px", marginTop: "35px" }}>
                 our food
               </h1>
-              <div className="flex space-x-36">
-                {c_ourfood?.map((link: any) => {
-                  return (
-                    <>
+              <PhotoSlider c_ourfood={c_ourfood} />
 
-                      {link?.image?.map((value: any) => {
-                        return (
-                          <>
-                            <div>
-                              <img style={{ height: "200px" }} src={value?.url} alt="" />
-                              <span> {link.line.label}</span>
-
-                            </div>
-
-                          </>
- )
-                      })}
-                    </>
-                  )
-                })}
-              </div>
             </div>
-            <div className="">
-              <h1  style={{color:"#000080",fontWeight:"bold",marginLeft:"550px",marginTop:"35px"}}>
+            <div  style={{marginTop:"40px"}}>
+              <h1 style={{ color: "#000080", fontWeight: "bold", marginLeft: "550px", marginTop: "35px" }}>
                 Favourite  Favourites
               </h1>
-              <div className="flex rounded-md space-x-36" >
-                {c_favouritefavorites?.map((link: any) => {
-                  return (
-                    <>
-                      {link?.image?.map((value: any) => {
-                        return (
-                          <>
-                            <div>
-                              <img style={{ height: "200px"}} src={value?.url} alt="" />
-                              <span> {link.line.label}</span>
-                            </div>
-                          </>
-                        )
-                      })}
-                    </>
-                  )
-                })}
+              <PhotoSlider c_favouritefavorites={c_favouritefavorites} />
+
+            </div>
+            <div className="mt-5 w-full h-56 md:h-96 bg-no-repeat bg-cover relative z-[0] append-banner-img w-full h-56 md:h-96 bg-opacity-50 bg-black  items-center justify-center ">
+              <div  >
+                <h1 className="text-black text-4xl font-bold font-evogriaregular md:text-4xl  2xl:text-5xl uppercase"> {c_downloadtheapp.name}</h1>
               </div>
+              <div>
+                <p>
+                  {c_downloadtheapp.line2}
+                </p>
+              </div>
+              <div className="phoneimage">
+                <img className="hidden md:block object-cover object-center absolute top-0 left-0 -z-[1] w-full h-full" src={c_bannerimage.url} alt="" />
+              </div>
+              <div>
+                <img src={c_downloadtheapp.image.url} alt="" />
+              </div>
+              <div>
+              {Googleimage}
             </div>
-            <div>
-              <h1> {c_downloadtheapp.name}</h1>
-              <p>
-                {c_downloadtheapp.line2}
-              </p>
-              <img src={c_downloadtheapp.image.url} alt="" />
+
             </div>
-            <div>
-            {Googleimage}
+            <div style={{marginTop:"50px",marginLeft:"500px"}}>
+            <h1 >
+              {c_faqdata.line1}
+            </h1>
+            <h3>
+            {c_faqdata.line2}
+            </h3>
             </div>
-            <div><Faq faqs={c_faq} /></div>
-        
             
-           
-           
+            <div><Faq faqs={c_faq} /></div>
+
+
+
+
             <div className="nearby-sec">
               <div className="container">
                 <div className="sec-title"><h2 className="">{StaticData.NearStoretext}</h2></div>
