@@ -7,7 +7,7 @@ const Header = (props: any) => {
   ));
   const image1 = props?._site?.c_headergoogleimage?.map((link: any) => (
     <a href="">
-      <img src={link.url} alt="" style={{ height: "95px", marginLeft: "555px", marginRight: "20px" }} />
+      <img src={link.url} alt="" style={{ height: "42px", marginLeft: "555px", marginRight: "20px",marginTop:"50px" }} />
     </a>
   ));
   return (

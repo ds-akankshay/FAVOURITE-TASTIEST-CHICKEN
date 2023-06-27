@@ -19,13 +19,13 @@ const PhotoSlider = (props: any) => {
     <SplideSlide key={i}> 
       <div key={i} className="menues" >
         {link.image.map((e: any ) =>(
-        <div>
-        <img className="" src={e.url} alt={''} />
+        <div style={{marginLeft:"50px"}}>
+        <img className="" src={e.url} alt={''} style={{height:"207px", width:"224px"}} />
         </div>
         ))}
         
       <div className="orderbtn">
-      <button className="ctabtn btndefault" style={{backgroundColor:"#090f6d",height:"35px",width:"150px",color:"white"}} >
+      <button className="ctabtn btndefault" style={{backgroundColor:"#090f6d",height:"35px",width:"150px",color:"white",marginLeft:"80px"}} >
        
         {link.line.label}
         
@@ -38,13 +38,13 @@ const PhotoSlider = (props: any) => {
     <SplideSlide key={i}> 
       <div key={i} className="menues">
         {link.image.map((e: any ) =>(
-        <div>
-        <img  src={e.url} alt={''} />
+        <div style={{marginLeft:"50px"}}>
+        <img  src={e.url} alt={''} style={{height:"207px", width:"224px"}} />
         </div>
         ))}
         
       <div className="orderbtn">
-      <button className="ctabtn btndefault" style={{backgroundColor:"#090f6d",height:"35px",width:"150px",color:"white"}} >
+      <button className="ctabtn btndefault" style={{backgroundColor:"#090f6d",height:"35px",width:"150px",color:"white",marginLeft:"80px"}} >
        
         {link.line.label}
         

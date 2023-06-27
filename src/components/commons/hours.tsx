@@ -97,7 +97,7 @@ function convertTo12HourFormat(time: string, includeMeridiem: boolean): string {
   const timeParts = time.split(":");
   let hour = Number(timeParts[0]);
   const minutesString = timeParts[1];
-  const meridiem = hour < 12 || hour === 24 ? "AM" : "PM"; // Set AM/PM
+  const meridiem = hour < 12 || hour === 24 ? "" : ""; // Set AM/PM
   hour = hour % 12 || 12; // Adjust hours
 
   return (

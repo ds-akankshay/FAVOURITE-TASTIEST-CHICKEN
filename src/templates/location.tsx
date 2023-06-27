@@ -88,7 +88,8 @@ export const config: TemplateConfig = {
       "dm_directoryParents.slug",
       "dm_directoryParents.meta.entityType",
       "c_bannertext",
-      "c_faqdata"
+      "c_faqdata",
+      "deliveryHours"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -283,6 +284,7 @@ const Location: Template<ExternalApiRenderData> = ({
     address,
     slug,
     hours,
+    deliveryHours,
     mainPhone,
     photoGallery,
     c_banner_image,
@@ -314,8 +316,11 @@ const Location: Template<ExternalApiRenderData> = ({
   } = document;
   const Orderimage = c_oderimage?.map((link: any) => (
     <>
+    <a href="">
       <img className="object-fill h-48 w-50" src={link.url} alt="" style={{ height: "60px" }} />
+      </a>
     </>
+
 
   ));
   const Connectedimage = c_connected?.image?.map((link: any) => (
@@ -330,8 +335,19 @@ const Location: Template<ExternalApiRenderData> = ({
   const Googleimage = _site?.c_headergoogleimage?.map((link: any) => (
     <>
       <a href="" >
-        <img style={{ height: "95px" }} src={link?.url} alt="" />
+        <img style={{ height: "42px" }} src={link?.url} alt="" />
       </a>
+
+    </>
+
+  ));
+  const hourstime=deliveryHours?.openIntervals?.map((link: any) => (
+    <>
+     <span>
+      {link.start}
+      {link.end}
+
+     </span>
 
     </>
 
@@ -552,14 +568,15 @@ const Location: Template<ExternalApiRenderData> = ({
               </div>
             </div>
             <div className="openClosestatus detail-page closeing-div">
-              <OpenClose timezone={timezone} hours={hours} />
+              <OpenClose timezone={timezone} hours={hours}  />
             </div>
             <div className="location-information" style={{ marginTop: "50px" }} >
               <Contact address={address}
                 phone={mainPhone} latitude={yextDisplayCoordinate ? yextDisplayCoordinate.latitude : displayCoordinate?.latitude}
-                yextDisplayCoordinate={yextDisplayCoordinate} longitude={yextDisplayCoordinate ? yextDisplayCoordinate.longitude : displayCoordinate?.longitude} ordertext={c_ordertext} hours={hours} additionalHoursText={additionalHoursText}  ></Contact>
+                yextDisplayCoordinate={yextDisplayCoordinate} longitude={yextDisplayCoordinate ? yextDisplayCoordinate.longitude : displayCoordinate?.longitude} ordertext={c_ordertext} hours={hours} additionalHoursText={additionalHoursText} ></Contact>
               {
                 hours ?
+                
                   <div className="map-sec" id="map_canvas">
                     <CustomMap prop={yextDisplayCoordinate ? yextDisplayCoordinate : displayCoordinate} />
                   </div> :
@@ -569,15 +586,20 @@ const Location: Template<ExternalApiRenderData> = ({
                   </div>
               }
             </div>
-            <span style={{ fontSize: "17px", fontWeight: "inherit", marginBottom: "20px" }}>
+          
+            <span style={{ fontSize: "17px", fontWeight: "inherit", marginBottom: "20px" ,marginLeft:"35px"}}>
               {c_ordertext}
             </span>
             <div>
-              <img src={c_ordertextphoto.url} alt="" style={{ height: "64px", width: "84px" }} />
+              <a href="">
+              <img src={c_ordertextphoto.url} alt="" style={{ height: "64px", width: "84px",marginLeft:"35px" }} />
+              </a>
             </div>
-            <span style={{ fontSize: "17px", fontWeight: "inherit", marginTop: "10px" }}>{c_uberarticle}</span>
-            <div className="flex space-x-4" style={{ marginTop: "10px", marginLeft: "30px" }}>
+            <span style={{ fontSize: "17px", fontWeight: "inherit", marginTop: "10px",marginLeft:"35px" }}>{c_uberarticle}</span>
+            <div className="flex space-x-4" style={{ marginTop: "10px", marginLeft: "35px" }}>
+              
               {Orderimage}
+            
             </div>
             <div style={{ backgroundColor: "#000080", width: "750px", marginTop: "35px", height: "52px", marginLeft: "30px" }}>
 
@@ -589,6 +611,9 @@ const Location: Template<ExternalApiRenderData> = ({
 
 
               </div>
+             <div>
+             {hourstime}
+             </div>
             </div>
             <div>
               <h1 style={{ color: "#000080", fontWeight: "bold", marginLeft: "32px", marginTop: "32px" }}>
@@ -617,19 +642,20 @@ const Location: Template<ExternalApiRenderData> = ({
                 <h1 className="text-black text-4xl font-bold font-evogriaregular md:text-4xl  2xl:text-5xl uppercase"> {c_downloadtheapp.name}</h1>
               </div>
               <div>
-                <p>
+                <p className="text-left ">
                   {c_downloadtheapp.line2}
+                  <div>
+              {Googleimage}
+            </div>
+                  
                 </p>
               </div>
               <div className="phoneimage">
                 <img className="hidden md:block object-cover object-center absolute top-0 left-0 -z-[1] w-full h-full" src={c_bannerimage.url} alt="" />
+              
+                <img src={c_downloadtheapp.image.url} alt=""  style={{marginLeft:"1000px"}}/>
               </div>
-              <div>
-                <img src={c_downloadtheapp.image.url} alt="" />
-              </div>
-              <div>
-              {Googleimage}
-            </div>
+             
 
             </div>
             <div style={{marginTop:"50px",marginLeft:"500px"}}>
