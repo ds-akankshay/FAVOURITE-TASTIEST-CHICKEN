@@ -53,7 +53,7 @@ const Header = (props: any) => {
         {image1}
 
       </div>
-      <div className="">
+      {/* <div className="">
        <ol>
        {MenuHeader}
        
@@ -62,7 +62,7 @@ const Header = (props: any) => {
        {menuimage}
        </div>
        
-      </div>
+      </div> */}
 
     </>
   );
