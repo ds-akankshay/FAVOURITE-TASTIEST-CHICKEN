@@ -10,6 +10,35 @@ const Header = (props: any) => {
       <img src={link.url} alt="" style={{ height: "42px", marginLeft: "555px", marginRight: "20px",marginTop:"50px" }} />
     </a>
   ));
+
+
+  const MenuHeader = props?._site?.c_menusection?.map((link: any,e:any) => (
+    <>
+     <li className="flex">
+       {link.line1}
+     </li><br />
+   
+      
+        {link.line2.map((e: any ) =>(
+          <>
+          <a href="">
+          
+            {e.label}
+          </a><br />
+
+          </>
+        ))}
+        
+        </>
+  ));
+
+
+  const menuimage = props?._site?.c_menuimages?.map((link: any) => (
+    <a href="">
+      <img src={link.url} alt="" style={{ height: "32px" }} />
+    </a>
+  ));
+
   return (
     <>
       <div className="flex">
@@ -23,6 +52,16 @@ const Header = (props: any) => {
 
         {image1}
 
+      </div>
+      <div className="">
+       <ol>
+       {MenuHeader}
+       
+       </ol>
+       <div className="flex space-x-4">
+       {menuimage}
+       </div>
+       
       </div>
 
     </>

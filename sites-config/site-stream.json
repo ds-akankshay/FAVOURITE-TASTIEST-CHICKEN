@@ -8,7 +8,9 @@
       "name",
       "c_headergoogleimage",
       "c_headerlogo",
-      "c_footerdata"
+      "c_footerdata",
+      "c_menusection",
+      "c_menuimages"
 
   ],
   "localization": {
