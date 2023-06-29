@@ -126,7 +126,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   //   url += `${document.slug.toString()}.html`;
   // }
 
-  return `locations/${document.locale}`;
+  return `/locations/${document.locale}/${document.slug}`;
 };
 /**
  * Defines a list of paths which will redirect to the path created by getPath.
@@ -135,7 +135,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
  * a new deploy.
  */
 export const getRedirects: GetRedirects<TemplateProps> = ({ document }) => {
-  return [`/locations/${document.locale}/${document.slug}`];
+  return [`index-old/${document.slug}`];
 };
 
 /**
