@@ -98,7 +98,7 @@ export const config: TemplateConfig = {
     },
     // The entity language profiles that documents will be generated for.
     localization: {
-      locales: ["en"],
+      locales: ["en","fr"],
       primary: false,
     },
   },
@@ -126,7 +126,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   //   url += `${document.slug.toString()}.html`;
   // }
 
-  return document.id;
+  return `locations/${document.locale}`;
 };
 /**
  * Defines a list of paths which will redirect to the path created by getPath.
@@ -135,7 +135,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
  * a new deploy.
  */
 export const getRedirects: GetRedirects<TemplateProps> = ({ document }) => {
-  return [`index-old/${document.id}`];
+  return [`/locations/${document.locale}/${document.slug}`];
 };
 
 /**
