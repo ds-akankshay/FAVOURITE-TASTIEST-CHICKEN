@@ -179,15 +179,15 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         },
       },
 
-      {
-        type: "link",
-        attributes: {
-          rel: "canonical",
-          href: `${document._site.c_canonical ? document.c_canonical : stagingBaseurl
+      // {
+      //   type: "link",
+      //   attributes: {
+      //     rel: "canonical",
+      //     href: `${document._site.c_canonical ? document.c_canonical : stagingBaseurl
 
-            }${document.slug ? document.slug : `${document.name.toLowerCase()}`}.html`,
-        },
-      },
+      //       }${document.slug ? document.slug : `${document.name.toLowerCase()}`}.html`,
+      //   },
+      // },
 
       {
         type: "meta",

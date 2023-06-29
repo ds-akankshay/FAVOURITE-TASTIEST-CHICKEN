@@ -128,17 +128,17 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           },
         },
 
-        {
-          type: "link",
-          attributes: {
-            rel: "canonical",
-            href: `${
-              stagingBaseurl 
-                 ? stagingBaseurl + document.slug + ".html"
-                 : "/" + document.slug + ".html"
-            }`,
-          },
-        },
+        // {
+        //   type: "link",
+        //   attributes: {
+        //     rel: "canonical",
+        //     href: `${
+        //       stagingBaseurl 
+        //          ? stagingBaseurl + document.slug + ".html"
+        //          : "/" + document.slug + ".html"
+        //     }`,
+        //   },
+        // },
       //   // /og tags
 
         {

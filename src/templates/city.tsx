@@ -83,10 +83,10 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   path,
   document,
 }): HeadConfig => {
-  var canonical="";
-   document.dm_directoryChildren.map((entity: any) => {
-      canonical=  entity.address.countryCode.toLowerCase().replaceAll(" ", "-") + '/' +  entity.address.region.toLowerCase().replaceAll(" ", "-");
-          })
+  // var canonical="";
+  //  document.dm_directoryChildren.map((entity: any) => {
+  //     canonical=  entity.address.countryCode.toLowerCase().replaceAll(" ", "-") + '/' +  entity.address.region.toLowerCase().replaceAll(" ", "-");
+  //         })
 
   return {
     title: `${document.c_meta_title?document.c_meta_title:`FAVOURITE TASTIEST CHICKEN Stores in ${document.name} | Find a Local Store`}`,
@@ -137,30 +137,30 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           },
         },
 
-        {
-          type: "link",
-          attributes: {
-            rel: "canonical",
-            href: `${
-              stagingBaseurl 
-                 ? stagingBaseurl + canonical + "/"+ document.slug + ".html"
-                 : "/" + document.slug + ".html"
-            }`,
-          },
-        },
+        // {
+        //   type: "link",
+        //   attributes: {
+        //     rel: "canonical",
+        //     href: `${
+        //       stagingBaseurl 
+        //          ? stagingBaseurl + canonical + "/"+ document.slug + ".html"
+        //          : "/" + document.slug + ".html"
+        //     }`,
+        //   },
+        // },
       //   // /og tags
 
-        {
-          type: "meta",
-          attributes: {
-            property: "og:url",
-            content: `${
-              stagingBaseurl 
-                 ? stagingBaseurl + canonical + "/"+ document.slug + ".html"
-                 : "/" + document.slug + ".html"
-            }`,
-          },
-        },
+        // {
+        //   type: "meta",
+        //   attributes: {
+        //     property: "og:url",
+        //     content: `${
+        //       stagingBaseurl 
+        //          ? stagingBaseurl + canonical + "/"+ document.slug + ".html"
+        //          : "/" + document.slug + ".html"
+        //     }`,
+        //   },
+        // },
         {
           type: "meta",
           attributes: {
@@ -219,7 +219,7 @@ const City: Template<TemplateRenderProps> = ({
     dm_directoryParents,
     dm_directoryChildren,
     c_globalData,
-    c_canonical,
+    // c_canonical,
     c_metaDescription,
     c_metaTitle,
     _site,
