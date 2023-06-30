@@ -39,6 +39,8 @@ const Header = (props: any) => {
     </a>
   ));
 
+ 
+
   return (
     <>
       <div className="flex">
@@ -62,6 +64,12 @@ const Header = (props: any) => {
        {menuimage}
        </div>
        
+      </div>
+      <div>
+        
+      </div>
+      <div>
+        
       </div>
 
     </>
