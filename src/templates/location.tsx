@@ -658,14 +658,14 @@ const Location: Template<ExternalApiRenderData> = ({
              
 
             </div>
-            <div style={{marginTop:"50px",marginLeft:"500px"}}>
+            {/* <div style={{marginTop:"50px",marginLeft:"500px"}}>
             <h1 >
               {c_faqdata.line1}
             </h1>
             <h3>
             {c_faqdata.line2}
             </h3>
-            </div>
+            </div> */}
             
             <div><Faq faqs={c_faq} /></div>
 
