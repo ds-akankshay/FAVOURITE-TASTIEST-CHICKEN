@@ -7,6 +7,7 @@ type Props = {
     _site?: any;
     global:any;
     children?: React.ReactNode;
+    languagetr?:any;
 };
   
   const PageLayout = ({
@@ -14,12 +15,14 @@ type Props = {
     _site,
     global,
     children,
+    // languagetr
+      
   }: Props) => {
     return (
         <>
       
                 {children}
-      
+               
         </>
     );
   };

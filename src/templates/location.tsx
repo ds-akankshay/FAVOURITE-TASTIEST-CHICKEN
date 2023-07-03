@@ -88,8 +88,7 @@ export const config: TemplateConfig = {
       "dm_directoryParents.slug",
       "dm_directoryParents.meta.entityType",
       "c_bannertext",
-      "c_faqdata",
-      "deliveryHours"
+      "c_faqdata"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -284,7 +283,6 @@ const Location: Template<ExternalApiRenderData> = ({
     address,
     slug,
     hours,
-    deliveryHours,
     mainPhone,
     photoGallery,
     c_banner_image,
@@ -341,18 +339,7 @@ const Location: Template<ExternalApiRenderData> = ({
     </>
 
   ));
-  const hourstime=deliveryHours?.openIntervals?.map((link: any) => (
-    <>
-     <span>
-      {link.start}
-      {link.end}
-
-     </span>
-
-    </>
-
-  ));
-
+  
 
 
 
@@ -611,9 +598,9 @@ const Location: Template<ExternalApiRenderData> = ({
 
 
               </div>
-             <div>
+             {/* <div>
              {hourstime}
-             </div>
+             </div> */}
             </div>
             <div>
               <h1 style={{ color: "#000080", fontWeight: "bold", marginLeft: "32px", marginTop: "32px" }}>
@@ -658,14 +645,14 @@ const Location: Template<ExternalApiRenderData> = ({
              
 
             </div>
-            {/* <div style={{marginTop:"50px",marginLeft:"500px"}}>
+            <div style={{marginTop:"50px",marginLeft:"500px"}}>
             <h1 >
               {c_faqdata.line1}
             </h1>
             <h3>
             {c_faqdata.line2}
             </h3>
-            </div> */}
+            </div>
             
             <div><Faq faqs={c_faq} /></div>
 
