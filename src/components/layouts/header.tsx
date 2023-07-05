@@ -15,11 +15,11 @@ const Header = (props: any) => {
 
   const Logo = props?._site?.c_headerlogo?.map((link: any) => (
 
-    <img src={link.url} alt="" style={{ height: "102px", marginTop: "20px" }} />
+    <img src={link?.url} alt="" style={{ height: "102px", marginTop: "20px" }} />
   ));
   const image1 = props?._site?.c_headergoogleimage?.map((link: any) => (
     <a href="">
-      <img src={link.url} alt="" style={{ height: "42px", marginLeft: "555px", marginRight: "20px", marginTop: "50px" }} />
+      <img src={link?.url} alt="" style={{ height: "42px", marginLeft: "555px", marginRight: "20px", marginTop: "50px" }} />
     </a>
   ));
 
@@ -27,11 +27,11 @@ const Header = (props: any) => {
   const MenuHeader = props?._site?.c_menusection?.map((link: any, e: any) => (
     <>
       <li className="flex">
-        {link.line1}
+        {link?.line1}
       </li><br />
 
 
-      {link.line2.map((e: any) => (
+      {link?.line2?.map((e: any) => (
         <>
           <a href="">
 
@@ -47,7 +47,7 @@ const Header = (props: any) => {
 
   const menuimage = props?._site?.c_menuimages?.map((link: any) => (
     <a href="">
-      <img src={link.url} alt="" style={{ height: "32px" }} />
+      <img src={link?.url} alt="" style={{ height: "32px" }} />
     </a>
   ));
 
@@ -56,20 +56,22 @@ const Header = (props: any) => {
   return (
     <>
       <div className="flex">
-        <a href="">
-          {Logo}
-        </a>
-        {image1}
-      </div>
-      <div className="">
-        <ol>
-          {MenuHeader}
-        </ol>
-        <div className="flex space-x-4">
-          {menuimage}
+        <div className="">
+          <a href="">
+            {Logo}
+          </a>
+          {image1}
         </div>
-      </div>
-      <div>
+        {/* <div className="">
+          <ol>
+            {MenuHeader}
+          </ol>
+          <div className="flex space-x-4">
+            {menuimage}
+          </div>
+        </div> */}
+        <div>
+        </div>
       </div>
     </>
   );

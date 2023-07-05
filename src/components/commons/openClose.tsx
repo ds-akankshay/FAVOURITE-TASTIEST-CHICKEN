@@ -391,7 +391,7 @@ export default function OpenClose(props: any) {
       const f = new Intl.DateTimeFormat("en", m);
       return f.format(t);
     }
-    return a.map(format).join(s);
+    return a?.map(format).join(s);
   }
   if (props.hours && props.hours.reopenDate) {
     a = [{ day: "numeric" }, { month: "long" }, { year: "numeric" }];

@@ -10,7 +10,7 @@ const Footer = (props: any) => {
 		<>
 			<a href="">
 				<span>
-					{link.label}
+					{link?.label}
 				</span>
 			</a>
 		</>
@@ -23,7 +23,7 @@ const Footer = (props: any) => {
 
 	const FooterSocialIcon = props?._site?.c_footerdata?.image?.map((link: any) => (
 		<>
-			<img className="" src={link.url} alt="" />
+			<img className="" src={link?.url} alt="" />
 
 		</>
 	));

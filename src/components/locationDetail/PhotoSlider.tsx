@@ -18,7 +18,7 @@ const PhotoSlider = (props: any) => {
   const Dishesmenu = props?.c_ourfood?.map((link: any,i:any) => (
     <SplideSlide key={i}> 
       <div key={i} className="menues" >
-        {link.image.map((e: any ) =>(
+        {link?.image?.map((e: any ) =>(
         <div style={{marginLeft:"50px"}}>
         <img className="" src={e.url} alt={''} style={{height:"207px", width:"224px"}} />
         </div>
@@ -37,7 +37,7 @@ const PhotoSlider = (props: any) => {
   const Favourite = props?.c_favouritefavorites?.map((link: any,i:any) => (
     <SplideSlide key={i}> 
       <div key={i} className="menues">
-        {link.image.map((e: any ) =>(
+        {link?.image?.map((e: any ) =>(
         <div style={{marginLeft:"50px"}}>
         <img  src={e.url} alt={''} style={{height:"207px", width:"224px"}} />
         </div>
