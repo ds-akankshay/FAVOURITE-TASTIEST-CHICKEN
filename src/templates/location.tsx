@@ -315,7 +315,7 @@ const Location: Template<ExternalApiRenderData> = ({
   const Orderimage = c_oderimage?.map((link: any) => (
     <>
     <a href="">
-      <img className="object-fill h-48 w-50" src={link.url} alt="" style={{ height: "60px" }} />
+      <img className="object-fill h-48 w-50" src={link?.url} alt="" style={{ height: "60px" }} />
       </a>
     </>
 
@@ -324,7 +324,7 @@ const Location: Template<ExternalApiRenderData> = ({
   const Connectedimage = c_connected?.image?.map((link: any) => (
     <>
       <a href="">
-        <img style={{ height: "27px" }} src={link.url} alt="" />
+        <img style={{ height: "27px" }} src={link?.url} alt="" />
       </a>
 
     </>
@@ -459,10 +459,10 @@ const Location: Template<ExternalApiRenderData> = ({
     },
   });
   let imageurl = photoGallery ? photoGallery.map((element: any) => {
-    return element.image.url
+    return element.image?.url
   }) : null;
   console.log(document)
-  let bannerimage = c_banner_image && c_banner_image.image.url;
+  let bannerimage = c_banner_image && c_banner_image.image?.url;
 
 
   return (
@@ -522,7 +522,7 @@ const Location: Template<ExternalApiRenderData> = ({
             <div className="mt-5 w-full h-56 md:h-96 bg-no-repeat bg-cover relative z-[0] append-banner-img">
               <img
                 className="hidden md:block object-cover object-center absolute top-0 left-0 -z-[1] w-full h-full"
-                src={c_bannerimage.url}
+                src={c_bannerimage?.url}
                 alt={""}
               />
 
@@ -579,7 +579,7 @@ const Location: Template<ExternalApiRenderData> = ({
             </span>
             <div>
               <a href="">
-              <img src={c_ordertextphoto.url} alt="" style={{ height: "64px", width: "84px",marginLeft:"35px" }} />
+              <img src={c_ordertextphoto?.url} alt="" style={{ height: "64px", width: "84px",marginLeft:"35px" }} />
               </a>
             </div>
             <span style={{ fontSize: "17px", fontWeight: "inherit", marginTop: "10px",marginLeft:"35px" }}>{c_uberarticle}</span>
@@ -638,9 +638,9 @@ const Location: Template<ExternalApiRenderData> = ({
                 </p>
               </div>
               <div className="phoneimage">
-                <img className="hidden md:block object-cover object-center absolute top-0 left-0 -z-[1] w-full h-full" src={c_bannerimage.url} alt="" />
+                <img className="hidden md:block object-cover object-center absolute top-0 left-0 -z-[1] w-full h-full" src={c_bannerimage?.url} alt="" />
               
-                <img src={c_downloadtheapp.image.url} alt=""  style={{marginLeft:"1000px"}}/>
+                <img src={c_downloadtheapp.image?.url} alt=""  style={{marginLeft:"1000px"}}/>
               </div>
              
 
