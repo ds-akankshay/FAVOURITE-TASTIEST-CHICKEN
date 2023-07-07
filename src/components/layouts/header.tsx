@@ -5,6 +5,9 @@ type data = {
 
   languagetrs: any;
 };
+
+
+
 const Header = (props: any) => {
   // const { header, languagetrs } = props;
 

@@ -655,11 +655,7 @@ const Location: Template<ExternalApiRenderData> = ({
             </div>
             
             <div><Faq faqs={c_faq} /></div>
-
-
-
-
-            <div className="nearby-sec">
+             <div className="nearby-sec">
               <div className="container">
                 <div className="sec-title"><h2 className="">{StaticData.NearStoretext}</h2></div>
                 <div className="nearby-sec-inner">
