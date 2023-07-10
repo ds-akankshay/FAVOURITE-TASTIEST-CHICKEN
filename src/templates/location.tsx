@@ -88,7 +88,9 @@ export const config: TemplateConfig = {
       "dm_directoryParents.slug",
       "dm_directoryParents.meta.entityType",
       "c_bannertext",
-      "c_faqdata"
+      "c_faqdata",
+      "c_foodtext",
+      "c_favouriteh1text"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -308,7 +310,9 @@ const Location: Template<ExternalApiRenderData> = ({
     c_bannerimage,
     c_cta,
     c_bannertext,
-    c_faqdata
+    c_faqdata,
+    c_foodtext,
+    c_favouriteh1text
 
 
   } = document;
@@ -612,14 +616,14 @@ const Location: Template<ExternalApiRenderData> = ({
             </div>
             <div style={{marginTop:"40px"}}>
               <h1 style={{ color: "#000080", fontWeight: "bold", marginLeft: "550px", marginTop: "35px" }}>
-                our food
+                {c_foodtext}
               </h1>
               <PhotoSlider c_ourfood={c_ourfood} />
 
             </div>
             <div  style={{marginTop:"40px"}}>
               <h1 style={{ color: "#000080", fontWeight: "bold", marginLeft: "550px", marginTop: "35px" }}>
-                Favourite  Favourites
+                {c_favouriteh1text}
               </h1>
               <PhotoSlider c_favouritefavorites={c_favouritefavorites} />
 
