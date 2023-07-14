@@ -10,7 +10,17 @@
       "c_headerlogo",
       "c_footerdata",
       "c_menusection",
-      "c_menuimages"
+      "c_menuimages",
+      "c_sunday",
+      "c_monday",
+      "c_tuesday",
+      "c_wednesday",
+      "c_thursday",
+      "c_friday",
+      "c_saturday"
+      
+   
+
 
   ],
   "localization": {
