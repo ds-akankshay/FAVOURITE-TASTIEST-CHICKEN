@@ -610,12 +610,12 @@ const Location: Template<ExternalApiRenderData> = ({
             </div>
             <div className="mt-5 w-full h-56 md:h-96 bg-no-repeat bg-cover relative z-[0] append-banner-img w-full h-56 md:h-96 bg-opacity-50 bg-black  items-center justify-center ">
               <div  >
-                <h1 className="text-black text-4xl font-bold font-evogriaregular md:text-4xl  2xl:text-5xl uppercase"> {c_downloadtheapp.name}</h1>
+                <h1 className=""  style={{marginTop:"50px"}}> {c_downloadtheapp.name}</h1>
               </div>
               <div>
                 <p className="text-left ">
                   {c_downloadtheapp.line2}
-                  <div>
+                  <div style={{marginTop:"150px"}}>
                     {Googleimage}
                   </div>
                 </p>
@@ -623,11 +623,11 @@ const Location: Template<ExternalApiRenderData> = ({
               <div className="phoneimage">
                 <img className="hidden md:block object-cover object-center absolute top-0 left-0 -z-[1] w-full h-full" src={c_bannerimage?.url} alt="" />
 
-                <img src={c_downloadtheapp.image?.url} alt="" style={{ marginLeft: "1000px" }} />
+                {/* <img src={c_downloadtheapp.image?.url} alt="" style={{ marginLeft: "1000px" }} /> */}
               </div>
             </div>
             <div style={{ marginTop: "50px", marginLeft: "500px" }}>
-              <h1 >
+              <h1>
                 {c_faqdata.line1}
               </h1>
               <h3>
