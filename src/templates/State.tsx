@@ -47,7 +47,8 @@ export const config: TemplateConfig = {
             "dm_directoryChildren.dm_directoryChildren.name",
             "dm_directoryChildren.dm_directoryChildren.id",
             "dm_directoryChildren.dm_directoryChildren.slug",
-            "dm_directoryChildren.dm_directoryChildren.address"
+            "dm_directoryChildren.dm_directoryChildren.address",
+            "c_countryctabutton"
         ],
         // Defines the scope of entities that qualify for this stream.
         filter: {

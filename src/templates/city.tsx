@@ -56,7 +56,8 @@ export const config: TemplateConfig = {
     //   "dm_directoryChildren.dm_directoryChildrenCount",
       "dm_directoryChildren.address",
       "dm_directoryChildren.hours",
-      "dm_directoryChildren.yextDisplayCoordinate"
+      "dm_directoryChildren.yextDisplayCoordinate",
+      "c_countryctabutton"
     ],
     localization: {
       locales: ["en"],

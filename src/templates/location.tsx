@@ -90,7 +90,8 @@ export const config: TemplateConfig = {
       "c_bannertext",
       "c_faqdata",
       "c_foodtext",
-      "c_favouriteh1text"
+      "c_favouriteh1text",
+      "c_countryctabutton"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -99,7 +100,7 @@ export const config: TemplateConfig = {
     },
     // The entity language profiles that documents will be generated for.
     localization: {
-      locales: ["en","fr"],
+      locales: ["en", "fr"],
       primary: false,
     },
   },
@@ -312,14 +313,15 @@ const Location: Template<ExternalApiRenderData> = ({
     c_bannertext,
     c_faqdata,
     c_foodtext,
-    c_favouriteh1text
+    c_favouriteh1text,
+    c_countryctabutton
 
 
   } = document;
   const Orderimage = c_oderimage?.map((link: any) => (
     <>
-    <a href="">
-      <img className="object-fill h-48 w-50" src={link?.url} alt="" style={{ height: "60px" }} />
+      <a href="">
+        <img className="object-fill h-48 w-50" src={link?.url} alt="" style={{ height: "60px" }} />
       </a>
     </>
 
@@ -343,7 +345,7 @@ const Location: Template<ExternalApiRenderData> = ({
     </>
 
   ));
-  
+
 
 
 
@@ -472,7 +474,6 @@ const Location: Template<ExternalApiRenderData> = ({
   return (
 
     <>
-
       <JsonLd<Store>
         item={{
           "@context": "https://schema.org",
@@ -515,34 +516,21 @@ const Location: Template<ExternalApiRenderData> = ({
             parents={dm_directoryParents}
             baseUrl={relativePrefixToRoot}
           ></BreadCrumbs>
-
           <PageLayout global={_site}>
-          
-
-
-           
-            
-
             <div className="mt-5 w-full h-56 md:h-96 bg-no-repeat bg-cover relative z-[0] append-banner-img">
               <img
                 className="hidden md:block object-cover object-center absolute top-0 left-0 -z-[1] w-full h-full"
                 src={c_bannerimage?.url}
                 alt={""}
               />
-
               <div className="w-full h-56 md:h-96 bg-opacity-50 bg-black flex items-center justify-center ">
                 <div className="mx-2 text-center">
                   <div>
                     <h1 className="text-white text-6xl font-bold font-evogriaregular md:text-6xl  2xl:text-5xl uppercase">
-                     {name}
+                      {name}
                     </h1>
                     <div className="tobook-btn pt-6 flex justify-center text-white text-2xl">
-                      
                       {c_bannertext}
-                      
-                     
-                        
-                     
                     </div>
                     <div className="menu-collect-btn flex space-x-6 justify-center pt-6">
                       <a
@@ -551,15 +539,14 @@ const Location: Template<ExternalApiRenderData> = ({
                       >
                         {c_cta?.label}
                       </a>
-                     
+
                     </div>
-                   
                   </div>
                 </div>
               </div>
             </div>
             <div className="openClosestatus detail-page closeing-div">
-              <OpenClose timezone={timezone} hours={hours}  />
+              <OpenClose timezone={timezone} hours={hours} />
             </div>
             <div className="location-information" style={{ marginTop: "50px" }} >
               <Contact address={address}
@@ -567,7 +554,7 @@ const Location: Template<ExternalApiRenderData> = ({
                 yextDisplayCoordinate={yextDisplayCoordinate} longitude={yextDisplayCoordinate ? yextDisplayCoordinate.longitude : displayCoordinate?.longitude} ordertext={c_ordertext} hours={hours} additionalHoursText={additionalHoursText} ></Contact>
               {
                 hours ?
-                
+
                   <div className="map-sec" id="map_canvas">
                     <CustomMap prop={yextDisplayCoordinate ? yextDisplayCoordinate : displayCoordinate} />
                   </div> :
@@ -577,20 +564,17 @@ const Location: Template<ExternalApiRenderData> = ({
                   </div>
               }
             </div>
-          
-            <span style={{ fontSize: "17px", fontWeight: "inherit", marginBottom: "20px" ,marginLeft:"35px"}}>
+            <span style={{ fontSize: "17px", fontWeight: "inherit", marginBottom: "20px", marginLeft: "35px" }}>
               {c_ordertext}
             </span>
             <div>
               <a href="">
-              <img src={c_ordertextphoto?.url} alt="" style={{ height: "64px", width: "84px",marginLeft:"35px" }} />
+                <img src={c_ordertextphoto?.url} alt="" style={{ height: "64px", width: "84px", marginLeft: "35px" }} />
               </a>
             </div>
-            <span style={{ fontSize: "17px", fontWeight: "inherit", marginTop: "10px",marginLeft:"35px" }}>{c_uberarticle}</span>
+            <span style={{ fontSize: "17px", fontWeight: "inherit", marginTop: "10px", marginLeft: "35px" }}>{c_uberarticle}</span>
             <div className="flex space-x-4" style={{ marginTop: "10px", marginLeft: "35px" }}>
-              
               {Orderimage}
-            
             </div>
             <div style={{ backgroundColor: "#000080", width: "750px", marginTop: "35px", height: "52px", marginLeft: "30px" }}>
 
@@ -599,10 +583,8 @@ const Location: Template<ExternalApiRenderData> = ({
                 <span className="flex" style={{ marginLeft: "415px" }}>
                   {Connectedimage}
                 </span>
-
-
               </div>
-             {/* <div>
+              {/* <div>
              {hourstime}
              </div> */}
             </div>
@@ -614,19 +596,17 @@ const Location: Template<ExternalApiRenderData> = ({
                 {c_information.line2}
               </span>
             </div>
-            <div style={{marginTop:"40px"}}>
+            <div style={{ marginTop: "40px" }}>
               <h1 style={{ color: "#000080", fontWeight: "bold", marginLeft: "550px", marginTop: "35px" }}>
                 {c_foodtext}
               </h1>
               <PhotoSlider c_ourfood={c_ourfood} />
-
             </div>
-            <div  style={{marginTop:"40px"}}>
+            <div style={{ marginTop: "40px" }}>
               <h1 style={{ color: "#000080", fontWeight: "bold", marginLeft: "550px", marginTop: "35px" }}>
                 {c_favouriteh1text}
               </h1>
               <PhotoSlider c_favouritefavorites={c_favouritefavorites} />
-
             </div>
             <div className="mt-5 w-full h-56 md:h-96 bg-no-repeat bg-cover relative z-[0] append-banner-img w-full h-56 md:h-96 bg-opacity-50 bg-black  items-center justify-center ">
               <div  >
@@ -636,30 +616,26 @@ const Location: Template<ExternalApiRenderData> = ({
                 <p className="text-left ">
                   {c_downloadtheapp.line2}
                   <div>
-              {Googleimage}
-            </div>
-                  
+                    {Googleimage}
+                  </div>
                 </p>
               </div>
               <div className="phoneimage">
                 <img className="hidden md:block object-cover object-center absolute top-0 left-0 -z-[1] w-full h-full" src={c_bannerimage?.url} alt="" />
-              
-                <img src={c_downloadtheapp.image?.url} alt=""  style={{marginLeft:"1000px"}}/>
-              </div>
-             
 
+                <img src={c_downloadtheapp.image?.url} alt="" style={{ marginLeft: "1000px" }} />
+              </div>
             </div>
-            <div style={{marginTop:"50px",marginLeft:"500px"}}>
-            <h1 >
-              {c_faqdata.line1}
-            </h1>
-            <h3>
-            {c_faqdata.line2}
-            </h3>
+            <div style={{ marginTop: "50px", marginLeft: "500px" }}>
+              <h1 >
+                {c_faqdata.line1}
+              </h1>
+              <h3>
+                {c_faqdata.line2}
+              </h3>
             </div>
-            
             <div><Faq faqs={c_faq} /></div>
-             <div className="nearby-sec">
+            <div className="nearby-sec">
               <div className="container">
                 <div className="sec-title"><h2 className="">{StaticData.NearStoretext}</h2></div>
                 <div className="nearby-sec-inner">
@@ -668,6 +644,11 @@ const Location: Template<ExternalApiRenderData> = ({
                     : ''}
                 </div>
               </div>
+            </div>
+            <div >
+              <button className="rounded" style={{ backgroundColor: "red", height: "50px", width: "270px", marginBottom: "49px", marginLeft: "600px" }}>
+                <a href="" style={{ color: "white" }}>{c_countryctabutton.label}</a>
+              </button>
             </div>
           </PageLayout>
         </AnalyticsScopeProvider>
