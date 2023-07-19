@@ -57,7 +57,7 @@ export const config: TemplateConfig = {
         },
         // The entity language profiles that documents will be generated for.
         localization: {
-            locales: ["en"],
+            locales: ["en","fr"],
             primary: false,
         },
     },
@@ -73,7 +73,9 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
     });
     url += document.slug.toString();
 
-    return url + '.html';
+    // return url + '.html';
+    
+  return `/ce_region/${document.locale}/${document.slug}`;
 };
 
 

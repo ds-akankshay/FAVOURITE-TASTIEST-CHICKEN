@@ -61,24 +61,29 @@ export const config: TemplateConfig = {
     },
     // The entity language profiles that documents will be generated for.
     localization: {
-      locales: ["en"],
+      locales: ["en","fr"],
       primary: false,
     },
   },
 };
 
 
-export const getPath: GetPath<TemplateProps> = () => {
+export const getPath: GetPath<TemplateProps> = ({document}) => {
   // console.log(document, "bkg")
   // return `${document.slug?.toString()}` + ".html";
-  return "index.html"
+  return `/ce_country/${document.locale}/${document.slug}`;
+ 
+
+
+
+  // console.log(document,"check")
+
 
 };
 
 // export const getRedirects: GetRedirects<TemplateProps> = ({ document }) => {
 //   return [`index-old/${document.id.toString()}`];
 // };
-
 
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   relativePrefixToRoot,
@@ -210,6 +215,10 @@ const country: Template<TemplateRenderProps> = ({
     dm_directoryParents,
     dm_directoryChildren
   } = document;
+ 
+  console.log(document,"checkdshidahyesoiauso")
+
+
   const childrenDivs = dm_directoryChildren ? dm_directoryChildren.map((entity: any) => {
     let detlslug;
     if (typeof entity.dm_directoryChildren != "undefined") {

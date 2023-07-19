@@ -60,13 +60,13 @@ export const config: TemplateConfig = {
       "c_countryctabutton"
     ],
     localization: {
-      locales: ["en"],
+      locales: ["en","fr"],
       primary: false,
     },
   },
 };
 
-export const getPath: GetPath<TemplateProps> = ({ document }) => {
+export const getPath: GetPath<TemplateProps> = ({document}) => {
   var url: any = ""
   document.dm_directoryParents.map((i: any) => {
     if (i.meta.entityType.id == 'ce_country') {
@@ -76,13 +76,17 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
       url = `${url}/${i.slug}/${document.slug.toString()}.html`
     }
   })
-  return url;
+  
+  return `/ce_city/${document.locale}/${document.slug}`;
+  
 };
+
 
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   relativePrefixToRoot,
   path,
   document,
+  
 }): HeadConfig => {
   // var canonical="";
   //  document.dm_directoryChildren.map((entity: any) => {
@@ -272,7 +276,7 @@ const City: Template<TemplateRenderProps> = ({
       url = `/${entity.id.toString()}`;
     }
 
-
+   
 
     return (
 
