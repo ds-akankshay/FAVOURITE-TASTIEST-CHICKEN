@@ -5,6 +5,8 @@ import CookieConsent from "react-cookie-consent";
 import { StaticData } from "../../../sites-global/staticData";
 import { useEffect, useState } from "react";
 import Link from "../commons/Link";
+import ChatPopUp from "../Chatbot";
+
 const Footer = (props: any) => {
 	const FooterName = props?._site?.c_footerdata?.name?.map((link: any) => (
 		<>
@@ -38,6 +40,7 @@ const Footer = (props: any) => {
 						<div className="text-left" style={{ color: "white",marginLeft:"442px",marginRight:"263px",marginTop:"20px"}}>
 							{FooterDescription}
 						</div>
+						
 						<div  >
 							<a href="" style={{ display: "flex", height: "40px",marginTop:"20px" }}>
 								{FooterSocialIcon}
@@ -45,7 +48,7 @@ const Footer = (props: any) => {
 						</div>
 					</div>
 				</div>
-
+				{/* <ChatPopUp/> */}
 			</footer>
 			<CookieConsent
 				buttonText={"Accept"}

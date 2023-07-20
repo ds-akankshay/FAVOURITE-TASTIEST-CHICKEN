@@ -5,7 +5,7 @@ import constant from "../constant";
 // import { stagingBaseUrl } from "../constants";
 // import bannerImage from "../images/banner.png"
 import "../index.css";
-var currentUrl = "";
+// var currentUrl = "";
 import {
   Template,
   GetPath,
